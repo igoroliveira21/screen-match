@@ -30,12 +30,10 @@ public class Serie {
 
     private String sinopse;
 
-    @Transient
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //cascade como queremos salvar essas prorpiedades secundárias
     private List<Episodio> episodios = new ArrayList<>();
 
-    public Serie() {
-
-    }
+    public Serie() {}
 
     public Serie(DadosSerie dadosSerie){
         this.titulo = dadosSerie.titulo();
@@ -61,6 +59,7 @@ public class Serie {
     }
 
     public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this)); // está serie é dona deste episódio
         this.episodios = episodios;
     }
 
@@ -130,6 +129,7 @@ public class Serie {
                 ", atores='" + atores + '\'' +
                 ", poster='" + poster + '\'' +
                 ", sinopse='" + sinopse + '\'' +
+                ", episodios='" + episodios + '\'' +
                 ']';
     }
 }

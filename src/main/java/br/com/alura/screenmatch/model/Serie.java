@@ -30,7 +30,8 @@ public class Serie {
 
     private String sinopse;
 
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //cascade como queremos salvar essas prorpiedades secundárias
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER) //cascade se salvarmos uma serie também salvamos
+    // um episódio como queremos salvar essas prorpiedades secundárias// chamamos o fetch para quando chamarmos uma serie carregar os episódios também
     private List<Episodio> episodios = new ArrayList<>();
 
     public Serie() {}

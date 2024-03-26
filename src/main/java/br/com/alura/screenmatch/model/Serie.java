@@ -14,6 +14,7 @@ public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //id aoto incremental
     private Long id;
+
     @Column(unique = true)
     private String titulo;
 
